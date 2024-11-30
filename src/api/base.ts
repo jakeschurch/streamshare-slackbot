@@ -1,25 +1,19 @@
 export type Track = {
-  id: TrackID;
+  id: string;
   name: string;
   uri: string;
   artist: Artist;
 }
 
 export type Artist = {
-  id: ArtistID;
+  id: string;
   name: string;
 }
 
 export type Album = {
-  id: AlbumID;
+  id: string;
   name: string;
 }
-
-export type AlbumID = string
-
-export type ArtistID = string
-
-export type TrackID = string
 
 export type APIResponse = Track | Artist | Album;
 
@@ -40,9 +34,9 @@ export abstract class MusicAPI {
   abstract search(param: MusicSearchParam): Promise<APIResponse>
   abstract fromUrl(url: string): Promise<APIResponse>
   abstract get(url: string): Promise<Response>
-  abstract getTrack(trackID: TrackID): Promise<Track>
-  abstract getArtist(artistID: ArtistID): Promise<Artist>
-  abstract getAlbum(albumID: AlbumID): Promise<Album>
+  abstract getTrack(trackID: string): Promise<Track>
+  abstract getArtist(artistID: string): Promise<Artist>
+  abstract getAlbum(albumID: string): Promise<Album>
 }
 
 export abstract class APIResponseTransformer {
